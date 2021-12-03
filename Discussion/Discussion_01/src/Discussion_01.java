@@ -4,7 +4,7 @@
  */
 
 
-public class practice {
+public class Discussion_01 {
     public static void main(String[] args) {
         int[] inputArray = new int [] {3, 0, 4, 6, 3};
         System.out.println(mystery(inputArray,2));
@@ -47,6 +47,7 @@ class Fibonacci{
         return fib(n-1)+fib(n-2);
     }
 }
+
 
 
 
