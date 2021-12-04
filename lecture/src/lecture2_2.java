@@ -8,7 +8,7 @@ import java.net.PasswordAuthentication;
 /** Single List */
 public class lecture2_2 {
     public static void main(String[] args) {
-        SList L = new SList(15);
+        SList<Number> L = new SList<>(15);
         L.addFirst(10);
         L.addFirst(5);
         int x = L.getFirst();
@@ -17,11 +17,12 @@ public class lecture2_2 {
         L.addLast(1);
         System.out.println(L.size());
         System.out.println(L.getLast());
+
     }
 }
 
 
-class SList{
+class SList<Number> {
     static class IntNode{
         public int item;
         public IntNode next;

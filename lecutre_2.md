@@ -1,5 +1,7 @@
 # 海象之谜（待完成）
 
+java除了byte、short、int、long、float、double、boolean、char这8大类型之外，其余所有引用类型都是引用类型。
+
 ```java
 /**
  * @author Li Zezhong
@@ -20,6 +22,16 @@ public class lecture_1 {
         Warlus.doStuff(x,i);
         System.out.println(x.toString());
         System.out.println(i);
+        
+        int [] x,y;
+        x = new int[] {1,2,3,4,5};
+        y = x;
+        System.out.println(Arrays.toString(y));
+        x[0] = 0;
+        System.out.println(Arrays.toString(y));
+        x = new int [] {-1,2,5,4,99};
+        System.out.println(Arrays.toString(x));
+        System.out.println(Arrays.toString(y));
     }
 }
 
@@ -41,4 +53,6 @@ class  Warlus{
 ```
 
 # 双向链表（Intnode中的prev指针）（project1 待完成）
+
+# DList中会使用泛型，还没搞明白
 
