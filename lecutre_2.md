@@ -40,3 +40,5 @@ class  Warlus{
 }
 ```
 
+# 双向链表（Intnode中的prev指针）（project1 待完成）
+

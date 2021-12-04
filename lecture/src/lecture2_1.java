@@ -18,6 +18,11 @@ public class lecture2_1 {
         System.out.println(list3.IterativeSize());
         System.out.println(list3.get(1));
         System.out.println(list3.IterativeGet(1));
+        //调用addFirst()
+        IntList list4 = new IntList(5,null);
+        list4.addFirst(10);
+        System.out.println(list4.first);
+        System.out.println(list4.rest.first);
     }
 }
 
@@ -57,6 +62,11 @@ class IntList{
             n -=1;
         }
         return p.first;
+    }
+    public void addFirst(int x){
+        int y = first;
+        this.first = x;
+        this.rest = new IntList(y,null);
     }
 }
 
