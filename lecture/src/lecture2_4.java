@@ -25,7 +25,7 @@ public class lecture2_4 {
         w[0][0] = -w[0][0];
         System.out.println(Arrays.toString(w[0]));
 
-        
+
     }
 }
 
