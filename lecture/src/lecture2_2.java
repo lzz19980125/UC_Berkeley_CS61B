@@ -8,52 +8,59 @@ import java.net.PasswordAuthentication;
 /** Single List */
 public class lecture2_2 {
     public static void main(String[] args) {
-        SList<Number> L = new SList<>(15);
+        SList<Integer> L = new SList<>(63,15);
         L.addFirst(10);
         L.addFirst(5);
-        int x = L.getFirst();
-        System.out.println(x);
-        System.out.println(L.size());
-        L.addLast(1);
-        System.out.println(L.size());
-        System.out.println(L.getLast());
-
+        L.positive_print();
+        System.out.println();
+        L.negative_print();
     }
 }
 
 
-class SList<Number> {
-    static class IntNode{
-        public int item;
+class SList<buber> {
+     class IntNode{
+        public buber item;
         public IntNode next;
+        public IntNode prev;
 //        public IntNode prev;
-        public IntNode(int i,IntNode n){
+        public IntNode(buber i,IntNode n){
             item = i;
             next = n;
+        }
+        public IntNode(buber i,IntNode n,IntNode m){
+            item = i;
+            next = n;
+            prev = m;
         }
     }
     private IntNode sentinel;
     private int size;
     private IntNode last;
-    public SList(){
-        sentinel = new IntNode(63,null);
-        last = sentinel.next;
+    public SList(buber intnode){
+        sentinel = new IntNode(intnode,null,null);
+        last = sentinel;
         size = 0;
     }
-    public SList(int x){
-        sentinel = new IntNode(63,null);
-        sentinel.next = new IntNode(x,null);
-        last = sentinel.next;
+    public SList(buber intnode,buber x){
+        sentinel = new IntNode(intnode,null,null);
+        sentinel.next = new IntNode(x,null,sentinel);
         size = 1;
+        last = sentinel.next;
     }
-    public void addFirst(int y){
-        sentinel.next = new IntNode(y,sentinel.next);
+    public void addFirst(buber y){
+        sentinel.next = new IntNode(y,sentinel.next,sentinel);
+        if(sentinel.next.next!=null){
+            sentinel.next.next.prev = sentinel.next;
+        } else{
+            last = sentinel.next;
+        }
         size +=1;
     }
-    public int getFirst(){
+    public buber getFirst(){
         return sentinel.next.item;
     }
-    public int getLast(){
+    public buber getLast(){
         return last.item;
     }
 //    public void addLast(int x){
@@ -64,23 +71,38 @@ class SList<Number> {
 //        p.next = new IntNode(x,null);
 //        size +=1;
 //    }
-    public void addLast(int x){
-        last.next = new IntNode(x,null);
+    public void addLast(buber x){
+        last.next = new IntNode(x,null,last);
         last = last.next;
         size +=1;
     }
-    public static int size(IntNode p){
-        if(p.next ==null){
-            return 1;
-        }
-        return 1+size(p.next);
-    }
-    public int size(){
-        return size(sentinel.next);
-    }
-//    public int size(){
-//        return size;
+//    public static int size(IntNode p){
+//        if(p.next ==null){
+//            return 1;
+//        }
+//        return 1+size(p.next);
 //    }
+//    public int size(){
+//        return size(sentinel.next);
+//    }
+    public int size(){
+        return size;
+    }
+    public void positive_print(){
+        IntNode p=sentinel.next;
+        while(p !=last){
+            System.out.println(p.item);
+            p = p.next;
+        }
+        System.out.println(p.item);
+    }
+    public void negative_print(){
+        IntNode p=last;
+        while(p !=sentinel){
+            System.out.println(p.item);
+            p = p.prev;
+        }
+    }
 }
 
 

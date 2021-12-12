@@ -172,3 +172,138 @@ public int get(int i) {
     }
 ```
 
+# Discussion：pass-by-what
+
+```java
+public class Pokemon {
+    public String name;
+    public int level;
+    public Pokemon(String name, int level) {
+        this.name = name;
+        this.level = level;
+    }
+    public static void main(String[] args) {
+        Pokemon p = new Pokemon("Pikachu", 17);
+        int level = 100;
+        change(p, level);
+        System.out.println("Name: " + p.name + ", Level: " + p.level);
+    }
+    public static void change(Pokemon poke, int level) {
+        poke.level = level;
+        level = 50;
+        poke = new Pokemon("Gengar", 1);
+    }
+}
+```
+
+构建一个Pokemon.java的文件，最后的输出是：
+
+```java
+Name: Pikachu, Level: 100
+```
+
+原因如下：通过地址变量改变一个对象通常只有两种方法：（1）使用`.`操作符改变对象的属性 （2）使用Methods改变对象的属性，如果只是单纯的：
+
+```java
+poke = new Pokemon("Gengar", 1);
+```
+
+则是将新对象Gengar的地址付给了poke，而旧的Pikachu地址将在函数中丢失，而并不是旧的Pikachu对象被替换为Gengar对象。
+
+下面这一个Discussion的例子同样能够很好的说明上述问题：
+
+```java
+public class Foo {
+    public int x, y;
+    public Foo (int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public static void switcheroo (Foo a, Foo b) {
+        Foo temp = a;
+        a = b;
+        b = temp;
+    }
+
+    public static void fliperoo (Foo a, Foo b) {
+        Foo temp = new Foo(a.x, a.y);
+        a.x = b.x;
+        a.y = b.y;
+        b.x = temp.x;
+        b.y = temp.y;
+    }
+
+    public static void swaperoo (Foo a, Foo b) {
+        Foo temp = a;
+        a.x = b.x;
+        a.y = b.y;
+        b.x = temp.x;
+        b.y = temp.y;
+    }
+
+    public static void main (String[] args) {
+        Foo foobar = new Foo(10, 20);
+        Foo baz = new Foo(30, 40);
+        switcheroo(foobar, baz);
+        System.out.println("foobar.x="+foobar.x+" foobar.y="+foobar.y+" baz.x="+baz.x+" baz.y="+baz.y);
+        System.out.println();
+        fliperoo(foobar, baz);
+        System.out.println("foobar.x="+foobar.x+" foobar.y="+foobar.y+" baz.x="+baz.x+" baz.y="+baz.y);
+        System.out.println();
+        swaperoo(foobar, baz);
+        System.out.println("foobar.x="+foobar.x+" foobar.y="+foobar.y+" baz.x="+baz.x+" baz.y="+baz.y);
+    }
+}
+```
+
+程序输出为：
+
+```java
+foobar.x=10 foobar.y=20 baz.x=30 baz.y=40
+
+foobar.x=30 foobar.y=40 baz.x=10 baz.y=20
+
+foobar.x=10 foobar.y=20 baz.x=10 baz.y=20
+```
+
+# Discussion：静态方法强制改变类的属性
+
+```java
+public class Shock {
+    public static int bang;
+    public static Shock baby;
+    public Shock() {
+        this.bang = 100;
+    }
+    public Shock (int num) {
+        this.bang = num;
+        baby = starter();
+        this.bang += num;
+    }
+    public static Shock starter() {
+        Shock gear = new Shock();
+        return gear;
+    }
+    public static void shrink(Shock statik) {
+        statik.bang -= 1;
+    }
+    public static void main(String[] args) {
+        Shock gear = new Shock(200);
+        System.out.println(gear.bang);
+        shrink(gear);
+        shrink(starter());
+        System.out.println(gear.bang);
+    }
+}
+```
+
+上段程序的输出是：
+
+```java
+300
+99
+```
+
+这是由于在public Shock(int num)方法中存在starter()方法，而该方法是静态的，因此通过public Shock()方法强制将整个Shock类的bang属性重置为100，因此会有300的输出。
+
