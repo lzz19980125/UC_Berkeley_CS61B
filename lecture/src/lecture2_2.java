@@ -17,8 +17,7 @@ public class lecture2_2 {
     }
 }
 
-
-class SList<buber> {
+class SList<buber> implements List61B<buber>{
      class IntNode{
         public buber item;
         public IntNode next;
@@ -48,6 +47,7 @@ class SList<buber> {
         size = 1;
         last = sentinel.next;
     }
+    @Override
     public void addFirst(buber y){
         sentinel.next = new IntNode(y,sentinel.next,sentinel);
         if(sentinel.next.next!=null){
@@ -57,37 +57,55 @@ class SList<buber> {
         }
         size +=1;
     }
-    public buber getFirst(){
-        return sentinel.next.item;
-    }
-    public buber getLast(){
-        return last.item;
-    }
-//    public void addLast(int x){
-//        IntNode p = sentinel;
-//        while(p.next !=null){
-//            p = p.next;
-//        }
-//        p.next = new IntNode(x,null);
-//        size +=1;
-//    }
+    @Override
     public void addLast(buber x){
         last.next = new IntNode(x,null,last);
         last = last.next;
         size +=1;
     }
-//    public static int size(IntNode p){
-//        if(p.next ==null){
-//            return 1;
-//        }
-//        return 1+size(p.next);
-//    }
-//    public int size(){
-//        return size(sentinel.next);
-//    }
+
+    @Override
+    public buber getFirst(){
+        return sentinel.next.item;
+    }
+
+    @Override
+    public buber getLast(){
+        return last.item;
+    }
+
+    @Override
+    public buber removeLast() {
+        IntNode p = last;
+        last = last.prev;
+        size -=1;
+        return p.item;
+    }
+
+    @Override
     public int size(){
         return size;
     }
+    @Override
+    public buber get(int i){
+        IntNode p=sentinel.next;
+        for(int n=0;n<i;n +=1){
+            p = p.next;
+        }
+        return p.item;
+    }
+
+    @Override
+    public void insert(buber x, int position) {
+        IntNode p =sentinel.next;
+        for(int i=0;i<position-1;i +=1){
+            p = p.next;
+        }
+        IntNode m = new IntNode(x,p.next,p);
+        p.next.prev = m;
+        p.next = m;
+    }
+
     public void positive_print(){
         IntNode p=sentinel.next;
         while(p !=last){
@@ -103,6 +121,24 @@ class SList<buber> {
             p = p.prev;
         }
     }
+    //    public void addLast(int x){
+//        IntNode p = sentinel;
+//        while(p.next !=null){
+//            p = p.next;
+//        }
+//        p.next = new IntNode(x,null);
+//        size +=1;
+//    }
+
+//    public static int size(IntNode p){
+//        if(p.next ==null){
+//            return 1;
+//        }
+//        return 1+size(p.next);
+//    }
+//    public int size(){
+//        return size(sentinel.next);
+//    }
 }
 
 
