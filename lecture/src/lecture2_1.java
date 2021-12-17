@@ -2,6 +2,7 @@
  * @author Li Zezhong
  * @create 2021-12-03 20:28
  */
+
 public class lecture2_1 {
     public static void main(String[] args) {
         //正向构建List

@@ -10,7 +10,8 @@ public class lecture4_2 {
         n.addLast("c");
         n.rotateRight();
 
-//        VengefulSLList <String> n = new VengefulSLList<>(null);
+        System.out.println(do_twice(new Tenx(),2));
+        VengefulSLList <String> f =  (VengefulSLList <String>) new SList<String>(null);
 //        n.addLast("a");
 //        n.addLast("d");
 //        n.addLast("b");
@@ -19,6 +20,9 @@ public class lecture4_2 {
 //        n.removeLast();
 //        n.removeLast();
 //        n.print_deletedItems();
+    }
+    public static int do_twice(Hight_order_fun f, int x){
+        return f.apply(f.apply(x));
     }
 }
 
@@ -49,5 +53,12 @@ class VengefulSLList<Item> extends SList<Item>{
     public void print_deletedItems(){
         deletedItems.positive_print();
     }
+}
 
+class Tenx implements Hight_order_fun{
+
+    @Override
+    public int apply(int x) {
+        return 10*x;
+    }
 }
