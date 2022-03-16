@@ -239,7 +239,7 @@ public static void main(String[] args) {
 
 试想一下，一旦有很多子类，那么这个工作量将会比没有使用向上转型大很多。这也表明向上转型还有个优点就是提高了代码的简洁性。
 
-**重点：经过向上转型之后，在利用.操作符访问时，如果访问的是对象的属性，则编译的话就是看父类，运行同样是看父类；如果访问的是方法，编译就看父类，运行则看子类；如果访问的是父类中表明的static methods，尽管子类已经进行override，但编译和运行都是看父类**
+**重点：经过向上转型之后，在利用.操作符访问时，如果访问的是对象的属性，则编译的话就是看父类，运行同样是看父类；如果访问的是方法，编译就看父类，运行则看子类；如果访问的是父类中标明的static methods，尽管子类已经进行override，但编译和运行都是看父类**
 
 ### High order function(高阶函数，HOF)
 
@@ -376,8 +376,6 @@ VengefulSLList<Integer> vsl = new (VengefulSLList<Integer>) SLList<Integer>();
 Exception in thread "main" java.lang.ClassCastException: class SList cannot be cast to class VengefulSLList (SList and VengefulSLList are in unnamed module of loader 'app')
 	at lecture4_2.main(lecture4_2.java:14)
 ```
-
-
 
 ### 内置Comparable接口
 

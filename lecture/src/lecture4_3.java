@@ -28,8 +28,6 @@ public class lecture4_3 {
 
     public static void getWords(String inputFileName){
         List<String> lst = new ArrayList<String>();
-        In in = new In();
-        
     }
 }
 
