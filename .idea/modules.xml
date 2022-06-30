@@ -2,10 +2,15 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Discussion/Discussion.iml" filepath="$PROJECT_DIR$/Discussion/Discussion.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Homework/HomeWork.iml" filepath="$PROJECT_DIR$/Homework/HomeWork.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HomeWork_/HomeWork_.iml" filepath="$PROJECT_DIR$/HomeWork_/HomeWork_.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lab/Lab.iml" filepath="$PROJECT_DIR$/Lab/Lab.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Leetcode_practice/Leetcode_practice.iml" filepath="$PROJECT_DIR$/Leetcode_practice/Leetcode_practice.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/UC_Berkeley_CS61B.iml" filepath="$PROJECT_DIR$/.idea/UC_Berkeley_CS61B.iml" />
       <module fileurl="file://$PROJECT_DIR$/lecture/lecture.iml" filepath="$PROJECT_DIR$/lecture/lecture.iml" />
       <module fileurl="file://$PROJECT_DIR$/lecture_guide/lecture_guide.iml" filepath="$PROJECT_DIR$/lecture_guide/lecture_guide.iml" />
+      <module fileurl="file://$PROJECT_DIR$/practice_self/practice_self.iml" filepath="$PROJECT_DIR$/practice_self/practice_self.iml" />
     </modules>
   </component>
 </project>
